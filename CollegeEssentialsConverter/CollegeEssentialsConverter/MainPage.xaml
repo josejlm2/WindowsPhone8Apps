@@ -6,6 +6,7 @@
                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                             mc:Ignorable="d"
+                            Loaded="PhoneApplicationPage_Loaded"
                             FontFamily="{StaticResource PhoneFontFamilyNormal}"
                             FontSize="{StaticResource PhoneFontSizeNormal}"
                             Foreground="{StaticResource PhoneForegroundBrush}"
@@ -48,6 +49,7 @@
                        Style="{StaticResource PhoneTextNormalStyle}"
                        Margin="12,0" />
             <TextBlock Text="temperature"
+                       Name="PageTitle"
                        Margin="9,-7,0,0"
                        Style="{StaticResource PhoneTextTitle1Style}" />
         </StackPanel>
@@ -55,17 +57,56 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel"
               Grid.Row="1"
-              Margin="12,0,12,0">
-
+              Margin="12,0">
+            <TextBox Height="72"
+                     Margin="12,43,0,0"
+                     Width="438"
+                     HorizontalAlignment="Left"
+                     InputScope="Number"
+                     Name="textBox1"
+                     Text=""
+                     VerticalAlignment="Top"
+                     GotFocus="Value1_GotFocus" />
+            <TextBlock Height="30"
+                       Margin="25,6,0,0"
+                       Width="413"
+                       HorizontalAlignment="Left"
+                       Name="textBlock1"
+                       Text="Fahrenheit"
+                       VerticalAlignment="Top" />
+            <TextBox Height="72"
+                     Margin="12,177,0,0"
+                     Width="438"
+                     HorizontalAlignment="Left"
+                     InputScope="Number"
+                     Name="textBox2"
+                     Text=""
+                     VerticalAlignment="Top"
+                     GotFocus="Value2_GotFocus" />
+            <TextBlock Height="30"
+                       Margin="26,136,0,0"
+                       HorizontalAlignment="Left"
+                       Name="textBlock2"
+                       Text="Celsius"
+                       VerticalAlignment="Top" />
         </Grid>
-
-        <!--Uncomment to see an alignment grid to help ensure your controls are
-            aligned on common boundaries.  The image has a top margin of -32px to
-            account for the System Tray. Set this to 0 (or remove the margin altogether)
-            if the System Tray is hidden.
-
-            Before shipping remove this XAML and the image itself.-->
-        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsMenuEnabled="True"
+                              IsVisible="True">
+            <shell:ApplicationBarIconButton Click="Convert_Click"
+                                            IconUri="/images/sync.png"
+                                            Text="Convert" />
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="Temperature"
+                                              Click="ChooseTemperatureConversion_Click" />
+                <shell:ApplicationBarMenuItem Text="Teaspoon/Tablespoon"
+                                              Click="ChooseSpoonConversion_Click" />
+                <shell:ApplicationBarMenuItem Text="About"
+                                              Click="About_Click" />
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>
