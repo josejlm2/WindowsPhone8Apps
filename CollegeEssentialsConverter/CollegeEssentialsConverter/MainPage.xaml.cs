@@ -60,6 +60,7 @@ namespace CollegeEssentialsConverter
                                 double fahrenheightValue = double.Parse(textBox1.Text);
                                 double celsiusValue = (fahrenheightValue - 32) * (5.0 / 9.0);
                                 textBox2.Text = celsiusValue.ToString("F");
+                                textBlock2.Text = "Celsius";
                             }
                             catch (Exception)
                             {
@@ -74,6 +75,7 @@ namespace CollegeEssentialsConverter
                                 double celsiusValue = double.Parse(textBox2.Text);
                                 double fahrenheitValue = (celsiusValue * (9.0 / 5.0)) + 32;
                                 textBox1.Text = fahrenheitValue.ToString("F");
+                                textBlock1.Text = "Fahrenheit";
                             }
                             catch (Exception)
                             {
@@ -93,6 +95,7 @@ namespace CollegeEssentialsConverter
                                 double teaspoons = double.Parse(textBox1.Text);
                                 double tablespoons = teaspoons / 3;
                                 textBox2.Text = tablespoons.ToString("F");
+                                textBlock2.Text = "Tablespoons";
                             }
                             catch (Exception)
                             {
@@ -107,6 +110,7 @@ namespace CollegeEssentialsConverter
                                 double tablespoons = double.Parse(textBox2.Text);
                                 double teaspoons = tablespoons * 3;
                                 textBox1.Text = teaspoons.ToString("F");
+                                textBlock1.Text = "Teaspoons";
                             }
                             catch (Exception)
                             {

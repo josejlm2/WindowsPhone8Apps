@@ -1,13 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{44f47551-851b-4080-9367-0f4a2d96866d}" Title="CollegeEssentialsConverter" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Jose Manriquez" Description="An application for the average college student" Publisher="Dream the Impossible" PublisherID="{ec6c9cea-bb5a-448b-99fc-7d955de84975}">
+  <App xmlns="" ProductID="{44f47551-851b-4080-9367-0f4a2d96866d}" Title="CollegeEssentialsConverter" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Jose Manriquez" Description="An application for the average college student" Publisher="Dream the Impossible Studios" PublisherID="{ec6c9cea-bb5a-448b-99fc-7d955de84975}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
-      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
-      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
-      <Capability Name="ID_CAP_SENSORS" />
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
     </Capabilities>
     <Tasks>
@@ -21,7 +18,7 @@
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
           <Title>CollegeEssentialsConverter</Title>
           <BackContent></BackContent>
-          <BackBackgroundImageURI>images\SplashScreenImage.jpg</BackBackgroundImageURI>
+          <BackBackgroundImageURI></BackBackgroundImageURI>
           <BackTitle></BackTitle>
           <DeviceLockImageURI></DeviceLockImageURI>
           <HasLarge></HasLarge>
