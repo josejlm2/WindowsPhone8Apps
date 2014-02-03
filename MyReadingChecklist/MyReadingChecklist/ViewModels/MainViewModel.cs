@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using MyReadingChecklist.Resources;
+using System.Xml.Linq;
 
 namespace MyReadingChecklist.ViewModels
 {
@@ -55,13 +56,50 @@ namespace MyReadingChecklist.ViewModels
             private set;
         }
 
+
+        public void LoadData() 
+        {
+            XDocument xdoc = XDocument.Load("Content/ShakespeareSonnets.xml");
+
+            var dataEnum = xdoc.Descendants("Sonnet");
+            //this.Items.Add(new ItemViewModel() { LineOne = "what ok", LineTwo = "Maecenas praesent accumsan bibendum", LineThree = "Facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu" });
+
+            foreach (XElement e in dataEnum)
+            {
+                ItemViewModel ivm = new ItemViewModel();
+
+                ivm.LineOne = (string)e.Element("Number").Value;
+
+                int lineNum = 1;
+                string sonnetBody = "";
+
+                var bodyEnum = e.Element("Body").Descendants("Line");
+
+                foreach (XElement line in bodyEnum)
+                {
+                    if (lineNum == 1)
+                        ivm.LineTwo = (string)line.Value;
+
+                    if (lineNum < 13)
+                        sonnetBody = sonnetBody + "\r\n" + line.Value;
+                    else
+                        sonnetBody = sonnetBody + "\r\n  " + line.Value;
+
+                    lineNum++;
+                }
+                ivm.LineThree = sonnetBody;
+                this.Items.Add(ivm);
+            }
+            this.IsDataLoaded = true;
+        }
+
         /// <summary>
         /// Creates and adds a few ItemViewModel objects into the Items collection.
         /// </summary>
-        public void LoadData()
+        /*public void LoadData()
         {
             // Sample data; replace with real data
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime one", LineTwo = "Maecenas praesent accumsan bibendum", LineThree = "Facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu" });
+            this.Items.Add(new ItemViewModel() { LineOne = "what ok", LineTwo = "Maecenas praesent accumsan bibendum", LineThree = "Facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu" });
             this.Items.Add(new ItemViewModel() { LineOne = "runtime two", LineTwo = "Dictumst eleifend facilisi faucibus", LineThree = "Suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus" });
             this.Items.Add(new ItemViewModel() { LineOne = "runtime three", LineTwo = "Habitant inceptos interdum lobortis", LineThree = "Habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent" });
             this.Items.Add(new ItemViewModel() { LineOne = "runtime four", LineTwo = "Nascetur pharetra placerat pulvinar", LineThree = "Ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos" });
@@ -80,6 +118,8 @@ namespace MyReadingChecklist.ViewModels
 
             this.IsDataLoaded = true;
         }
+*/
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)

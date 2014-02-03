@@ -38,16 +38,17 @@
          -->
 
         <!--Panorama control-->
-        <phone:Panorama Title="my application">
+        <phone:Panorama Title="my reading checklist">
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="/MyReadingChecklist;component/Assets/PanoramaBackground.png" />
             </phone:Panorama.Background>
 
             <!--Panorama item one-->
-            <phone:PanoramaItem Header="first item">
+            <phone:PanoramaItem Header="all">
                 <!--Single line list with text wrapping-->
                 <phone:LongListSelector Margin="0,0,-22,0"
                                         ItemsSource="{Binding Items}">
+                                        <!--SelectionChanged="LongListSelector_SelectionChanged">  -->
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,-6,0,12">
@@ -73,7 +74,7 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <TextBlock Text="second item"
+                                <TextBlock Text="reading"
                                            Style="{StaticResource PanoramaItemHeaderTextStyle}"
                                            Grid.Row="0" />
                             </Grid>
@@ -110,7 +111,7 @@
             </phone:PanoramaItem>
 
             <!--Panorama item three-->
-            <phone:PanoramaItem Header="third item"
+            <phone:PanoramaItem Header="read"
                                 Orientation="Horizontal">
                 <!--Double wide Panorama with large image placeholders-->
                 <Grid>
